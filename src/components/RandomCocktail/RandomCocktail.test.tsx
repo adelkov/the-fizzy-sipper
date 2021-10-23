@@ -1,3 +1,4 @@
+import userEvent from "@testing-library/user-event";
 import { Server } from "miragejs";
 import makeServer from "../../utils/tests/makeServer";
 import { render } from "../../utils/tests/render";
@@ -37,5 +38,15 @@ describe("RandomCocktail component", () => {
     const cocktail = await findByText("Dirty coca cola")
 
     expect(cocktail).toBeInTheDocument()
+  })
+
+  it('random cocktail is added to favorites when add to favorites clicked', async () => {
+    const { findByText, getByText } = render(<RandomCocktail />)
+    const addToFavoritesButton = await findByText("add to favorites")
+
+    userEvent.click(addToFavoritesButton)
+
+    const removeFromFavoritesButton = getByText(/remove from favorites/)
+    expect(removeFromFavoritesButton).toBeInTheDocument()
   })
 })

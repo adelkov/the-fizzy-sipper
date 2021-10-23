@@ -14,6 +14,9 @@ describe.only('SearchCocktails component', () => {
         if (request.queryParams.s === 'c') {
           return { drinks: [{ strDrink: 'sparkly orange 1', idDrink: 'b' }, { strDrink: 'sparkly orange 2', idDrink: 'id-2' }] }
         }
+        if (request.queryParams.s === 'f') {
+          return { drinks: [{ strDrink: 'sparkly orange 2', idDrink: 'id-2' }] }
+        }
 
         return { drinks: null }
       }
@@ -67,5 +70,18 @@ describe.only('SearchCocktails component', () => {
     const noResults = await findByText(/Nothing found/)
 
     expect(noResults).toBeInTheDocument()
+  })
+
+
+  it('searched cocktail is added to favorites when add to favorites clicked', async () => {
+    const { findByText, getByText, getByPlaceholderText } = render(<SearchCocktails />)
+    const searchInput = getByPlaceholderText('Search for a cocktail')
+    userEvent.type(searchInput, 'f')
+    const addToFavoritesButton = await findByText("add to favorites")
+
+    userEvent.click(addToFavoritesButton)
+
+    const removeFromFavoritesButton = getByText(/remove from favorites/)
+    expect(removeFromFavoritesButton).toBeInTheDocument()
   })
 })

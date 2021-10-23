@@ -1,3 +1,4 @@
+import userEvent from "@testing-library/user-event"
 import Drink from "../../types/Drink"
 import { render } from "../../utils/tests/render"
 import CocktailCard from "./CocktailCard"
@@ -49,5 +50,21 @@ describe('CocktailCard component', () => {
     const thumbnailImage = getByAltText(cocktail.name + ' thumbnail')
 
     expect(thumbnailImage).toBeInTheDocument()
+  })
+
+  it('renders add to favorites button when cocktail is not favorite', () => {
+    const { getByText } = render(<CocktailCard cocktail={{ ...cocktail, isFavorite: false }} />)
+
+    const addToFavoritesButton = getByText(/add to favorites/i)
+
+    expect(addToFavoritesButton).toBeInTheDocument()
+  })
+
+  it('renders remove from favorites button when cocktail is not favorite', () => {
+    const { getByText } = render(<CocktailCard cocktail={{ ...cocktail, isFavorite: true }} />)
+
+    const removeFromFavoritesButton = getByText(/remove from favorites/i)
+
+    expect(removeFromFavoritesButton).toBeInTheDocument()
   })
 })
