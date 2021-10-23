@@ -7,6 +7,7 @@ type GetEndpoints = {
   pathname: string
   resolver: RouteHandler<Registry<AnyModels, AnyFactories>> | undefined
 }[]
+
 function makeServer(getEndpoints: GetEndpoints) {
   return createServer({
     environment: "test",
