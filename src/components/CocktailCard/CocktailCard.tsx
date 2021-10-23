@@ -17,7 +17,7 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
         <p className='px-5 py-2'>{cocktail.instructions}</p>
         <ul className="px-5 py-2">
           {cocktail.ingredients.map(ingredient =>
-            <li key={ingredient.name}>{ingredient.name} ({ingredient.measure})</li>
+            <li key={ingredient.name + ingredient.measure}>{ingredient.name} ({ingredient.measure})</li>
           )}
         </ul>
       </div>
