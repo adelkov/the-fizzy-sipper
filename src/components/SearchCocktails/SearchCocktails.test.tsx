@@ -2,25 +2,22 @@ import userEvent from "@testing-library/user-event"
 import { render } from "../../utils/tests/render"
 import SearchCocktails from "./SearchCocktails"
 import { Server } from "miragejs";
-import { createServer } from "miragejs";
-import config from "../../utils/config";
+import makeServer from "../../utils/tests/makeServer";
 
 let server: Server
 
 describe.only('SearchCocktails component', () => {
   beforeEach(() => {
-    server = createServer({
-      environment: 'test',
-      routes() {
-        this.get(config.baseURL + 'search.php', (a, request) => {
-          if (request.queryParams.s === 'c') {
-            return { drinks: [{ strDrink: 'sparkly orange 1', idDrink: 'b' }, { strDrink: 'sparkly orange 2', idDrink: 'id-2' }] }
-          }
+    server = makeServer([{
+      pathname: 'search.php',
+      resolver: (_attributes, request) => {
+        if (request.queryParams.s === 'c') {
+          return { drinks: [{ strDrink: 'sparkly orange 1', idDrink: 'b' }, { strDrink: 'sparkly orange 2', idDrink: 'id-2' }] }
+        }
 
-          return { drinks: null }
-        })
-      },
-    })
+        return { drinks: null }
+      }
+    }])
   })
 
   afterEach(() => {

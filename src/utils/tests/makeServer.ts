@@ -1,10 +1,11 @@
-import { createServer } from "miragejs"
-import { MaybePromise } from "miragejs/server"
+import { createServer, Registry } from "miragejs"
+import { RouteHandler } from "miragejs/server"
+import { AnyModels, AnyFactories } from "miragejs/-types"
 import config from "../config"
 
 type GetEndpoints = {
   pathname: string
-  resolvedValue: MaybePromise<object>
+  resolver: RouteHandler<Registry<AnyModels, AnyFactories>> | undefined
 }[]
 function makeServer(getEndpoints: GetEndpoints) {
   return createServer({
@@ -13,9 +14,7 @@ function makeServer(getEndpoints: GetEndpoints) {
       getEndpoints.forEach((endpoints) => {
         this.get(
           config.baseURL + endpoints.pathname,
-          (a, r) => {
-            return endpoints.resolvedValue
-          },
+          endpoints.resolver,
         )
       })
     },

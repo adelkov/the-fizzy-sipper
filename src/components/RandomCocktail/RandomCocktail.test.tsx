@@ -10,7 +10,7 @@ describe("RandomCocktail component", () => {
     server = makeServer([
       {
         pathname: 'random.php',
-        resolvedValue: { drinks: [{ strDrink: "Dirty coca cola" }] }
+        resolver: () => ({ drinks: [{ strDrink: "Dirty coca cola" }] })
       }
     ])
   })
