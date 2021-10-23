@@ -15,11 +15,7 @@ function RandomCocktail() {
   return <div>
     <h2> My recommendation to you:</h2>
     {cocktail && <CocktailCard cocktail={cocktail} />}
-    <button onClick={() => {
-      console.log('refetch');
-
-      refetch()
-    }}>Recommend me another please.</button>
+    <button onClick={() => refetch()}>Recommend me another please.</button>
   </div>
 }
 
