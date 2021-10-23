@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Cocktails from "./pages/Cocktails";
 import Favorites from "./pages/Favorites";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 
 
 function App() {

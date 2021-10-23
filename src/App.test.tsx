@@ -9,7 +9,9 @@ test('renders without crashing', () => {
 test('renders cocktails page by default', () => {
   const { getByText } = render(<App />);
 
-  getByText(/cocktails page/i)
+  const cocktailsPage = getByText(/cocktails page/i)
+
+  expect(cocktailsPage).toBeInTheDocument()
 });
 
 test('renders favorites page after clicking the favorites link', () => {
@@ -17,8 +19,9 @@ test('renders favorites page after clicking the favorites link', () => {
 
   const favoritesLink = getByText(/my favorites/i)
   userEvent.click(favoritesLink)
+  const favoritesPage = getByText(/Favorites page/i)
 
-  getByText(/Favorites page/i)
+  expect(favoritesPage).toBeInTheDocument()
 });
 
 test('renders cocktails page after clicking the fizzy sipper logo on favorites page', () => {
@@ -28,6 +31,7 @@ test('renders cocktails page after clicking the fizzy sipper logo on favorites p
 
   const titleLink = getByText('The fizzy sipper')
   userEvent.click(titleLink)
+  const cocktailsPage = getByText(/cocktails page/i)
 
-  getByText(/cocktails page/i)
+  expect(cocktailsPage).toBeInTheDocument()
 });
