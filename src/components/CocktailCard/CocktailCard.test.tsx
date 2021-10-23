@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event"
 import Drink from "../../types/Drink"
 import { render } from "../../utils/tests/render"
 import CocktailCard from "./CocktailCard"

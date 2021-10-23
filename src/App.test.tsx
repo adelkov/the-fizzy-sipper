@@ -9,7 +9,7 @@ test('renders without crashing', () => {
 test('renders cocktails page by default', () => {
   const { getByText } = render(<App />);
 
-  const cocktailsPage = getByText(/cocktails page/i)
+  const cocktailsPage = getByText(/My recommendation to/i)
 
   expect(cocktailsPage).toBeInTheDocument()
 });
@@ -29,9 +29,9 @@ test('renders cocktails page after clicking the fizzy sipper logo on favorites p
   const favoritesLink = getByText(/my favorites/i)
   userEvent.click(favoritesLink)
 
-  const titleLink = getByText('The fizzy sipper')
+  const titleLink = getByText('Cocktails')
   userEvent.click(titleLink)
-  const cocktailsPage = getByText(/cocktails page/i)
+  const cocktailsPage = getByText(/My recommendation to/i)
 
   expect(cocktailsPage).toBeInTheDocument()
 });

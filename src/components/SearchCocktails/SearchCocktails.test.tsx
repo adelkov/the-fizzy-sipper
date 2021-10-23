@@ -35,19 +35,19 @@ describe.only('SearchCocktails component', () => {
   it('does not show loader initially', () => {
     const { queryByText } = render(<SearchCocktails />)
 
-    const loader = queryByText(/loading/)
+    const loader = queryByText(/loading/i)
 
     expect(loader).not.toBeInTheDocument()
   })
 
-  it('shows loader when user types search query', () => {
-    const { queryByText, getByPlaceholderText } = render(<SearchCocktails />)
+  it('shows at least one skeleton loader when user types search query', () => {
+    const { getByPlaceholderText, getAllByText } = render(<SearchCocktails />)
     const searchInput = getByPlaceholderText('Search for a cocktail')
 
     userEvent.type(searchInput, 'n')
 
-    const loader = queryByText(/loading/)
-    expect(loader).toBeInTheDocument()
+    const loaders = getAllByText(/loading/i)
+    expect(loaders[0]).toBeInTheDocument()
   })
 
   it('shows found cocktails upon successful search', async () => {

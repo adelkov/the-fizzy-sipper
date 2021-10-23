@@ -1,22 +1,37 @@
 import useRandomCocktail from "./useRandomCocktail"
 import CocktailCard from "../CocktailCard/CocktailCard"
+import Button from "../Button"
+import Skeleton from "../Skeleton"
 
 function RandomCocktail() {
   const { data: cocktail, isLoading, isError, refetch, isFetching } = useRandomCocktail()
+  const isLoadingOrFetching = isLoading || isFetching
 
-  if (isLoading || isFetching) {
-    return <div>Loading...</div>
+  function renderRecommendation() {
+    if (isLoadingOrFetching) {
+      return <Skeleton />
+    }
+
+    if (cocktail) {
+      return <CocktailCard cocktail={cocktail} />
+    }
+
+    if (isError) {
+      return <div>Oops an error happened :/</div>
+    }
+
+    return null
   }
 
-  if (isError) {
-    return <div>Oops, something went terribly wrong :/</div>
-  }
-
-  return <div>
-    <h2> My recommendation to you:</h2>
-    {cocktail && <CocktailCard cocktail={cocktail} />}
-    <button onClick={() => refetch()}>Recommend me another please.</button>
-  </div>
+  return (
+    <div className="flex flex-col gap-12 mt-12">
+      <div className="flex flex-col md:flex-row justify-between items-center">
+        <h2 className="text-2xl my-4 font-black">My recommendation to you</h2>
+        <Button label="Recommend me another please." onClick={() => refetch()} />
+      </div>
+      {renderRecommendation()}
+    </div>
+  )
 }
 
 export default RandomCocktail
