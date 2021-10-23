@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { QueryClientProvider } from "react-query"
+import queryClient from "./utils/queryClient";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Cocktails from "./pages/Cocktails";
+import Favorites from "./pages/Favorites/Favorites";
+import Navigation from "./components/Navigation/Navigation";
+import { FavoritesProvider } from './providers/useFavorites'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <QueryClientProvider client={queryClient}>
+      <FavoritesProvider>
+        <Router>
+          <Navigation />
+          <Switch>
+            <Route exact path="/">
+              <Cocktails />
+            </Route>
+            <Route path="/cocktails">
+              <Cocktails />
+            </Route>
+            <Route path="/favorites">
+              <Favorites />
+            </Route>
+          </Switch>
+        </Router>
+      </FavoritesProvider>
+    </QueryClientProvider>
+  )
 }
 
 export default App;
