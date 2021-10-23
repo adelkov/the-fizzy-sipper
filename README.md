@@ -1,11 +1,17 @@
 
 <div align="center">
-  <h1 style="font-family: cursive">The Fizzy Sipper</h1>
+  <h1 style="font-family: cursive;">The Fizzy Sipper</h1>
   <img width="100" src="public/cocktail.png" alt="The fizzy sipper cocktail" />
+  <p> 
+    A cocktail recommender application scaffolded with Create React App, build with React, react-query, Typescript and TailwindCSS.
+    Cocktail data retrieved from https://www.thecocktaildb.com/api.php public API.
+  </p>
 </div>
 
-### Deployment preview
 
+### Deployment preview
+Live preview available at:
+https://the-fizzy-sipper.vercel.app
 
 ### Up and running
 
