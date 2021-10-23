@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 import Cocktails from "./pages/Cocktails";
 import Favorites from "./pages/Favorites/Favorites";
@@ -19,7 +20,7 @@ function App() {
           <Navigation />
           <Switch>
             <Route exact path="/">
-              <Cocktails />
+              <Redirect to="/cocktails" />
             </Route>
             <Route path="/cocktails">
               <Cocktails />

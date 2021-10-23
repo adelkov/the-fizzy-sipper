@@ -16,7 +16,7 @@ function Navigation() {
           <p>Your personal bartender</p>
         </div>
         <li>
-          <Link to="/">Cocktails</Link>
+          <Link to="/cocktails">Cocktails</Link>
         </li>
       </ul>
     </nav>
