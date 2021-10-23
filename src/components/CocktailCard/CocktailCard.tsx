@@ -15,7 +15,7 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
     <ul>
       {cocktail.ingredients.map(ingredient => <li key={ingredient.name}>{ingredient.name} ({ingredient.measure})</li>)}
     </ul>
-    <img height={160} src={cocktail.imgSrc} alt={cocktail.name + ' thumbnail'} />
+    <img className="h-24" src={cocktail.imgSrc} alt={cocktail.name + ' thumbnail'} />
     <button onClick={() => toggleFavorite?.(cocktail)}>{cocktail.isFavorite ? 'remove from favorites' : 'add to favorites'}</button>
   </div>
 }

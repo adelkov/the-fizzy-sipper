@@ -16,7 +16,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <FavoritesProvider>
         <Router>
-          the fizzy sipper
+          <h1 className="bg-indigo-600">the fizzy sipper</h1>
           <Navigation />
           <Switch>
             <Route exact path="/">
