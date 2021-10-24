@@ -40,7 +40,7 @@ function SearchCocktails() {
   }
 
   return (
-    <div className="flex flex-col gap-12 mt-12">
+    <div className="flex flex-col gap-12 my-12">
       <h2 className="text-2xl my-4 font-black">Search for cocktails</h2>
       <input
         className="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md border-4 border-indigo-500 py-2 px-4"
