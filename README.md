@@ -3,7 +3,7 @@
   <h1 style="font-family: cursive;">The Fizzy Sipper</h1>
   <img width="100" src="public/cocktail.png" alt="The fizzy sipper cocktail" />
   <p> 
-    A cocktail recommender application scaffolded with Create React App, build with React, react-query, Typescript and TailwindCSS.
+    A cocktail recommender application scaffolded with Create React App, build with React, react-query, Typescript and TailwindCSS. Testing was done with Jest and MirageJS.
     Cocktail data retrieved from https://www.thecocktaildb.com/api.php public API.
   </p>
 </div>
